@@ -1,13 +1,16 @@
-import React from "react";
+import React, { useContext } from "react";
+import { useHistory } from "react-router-dom";
 import { makeStyles } from "@material-ui/core/styles";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
 import IconButton from "@material-ui/core/IconButton";
-import MenuIcon from "@material-ui/icons/Menu";
+import EcoIcon from "@material-ui/icons/Eco";
 import AccountCircle from "@material-ui/icons/AccountCircle";
 import MenuItem from "@material-ui/core/MenuItem";
 import Menu from "@material-ui/core/Menu";
+import Button from "@material-ui/core/Button";
+import { appContext } from "../../context/AppContext";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -22,13 +25,12 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function Navbar() {
-  //   const {currentUser} = useContext()
-  const [currentUser, setCurrentUser] = React.useState(false)
   const classes = useStyles();
-  const [auth, setAuth] = React.useState(true);
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
-
+  const history = useHistory();
+  const { token, setToken } = useContext(appContext);
+  const isAuth = localStorage.getItem('token');
   const handleMenu = (event) => {
     setAnchorEl(event.currentTarget);
   };
@@ -37,12 +39,27 @@ export default function Navbar() {
     setAnchorEl(null);
   };
 
-  //   const handleSignout = useCallback => {
-  //       signout()
-  //   }
+  const handleProfileClick = () => {
+    history.push('/profile')
+    setAnchorEl(null)
+  };
+
+  const handleMainPage = () =>  {
+    history.push('/');
+    setAnchorEl(null);
+  };
+
+  const handleLogout = () => {
+    localStorage.removeItem('token');
+    setToken(null);
+    history.push('/');
+    setAnchorEl(null);
+  };
+
 
   return (
     <div className={classes.root}>
+      <FormGroup></FormGroup>
       <AppBar position="static">
         <Toolbar>
           <IconButton
@@ -50,13 +67,14 @@ export default function Navbar() {
             className={classes.menuButton}
             color="inherit"
             aria-label="menu"
+            onClick={handleMainPage}
           >
-            <MenuIcon />
+            <EcoIcon />
           </IconButton>
           <Typography variant="h6" className={classes.title}>
             BloggApp
           </Typography>
-          {currentUser ? (
+          {token ? (
             <div>
               <IconButton
                 aria-label="account of current user"
@@ -69,6 +87,7 @@ export default function Navbar() {
                 <AccountCircle />
               </IconButton>
               <Menu
+                style={{marginTop: '3.2rem'}}
                 id="menu-appbar"
                 anchorEl={anchorEl}
                 anchorOrigin={{
@@ -83,28 +102,25 @@ export default function Navbar() {
                 open={open}
                 onClose={handleClose}
               >
-                <MenuItem onClick={handleClose}>Profile</MenuItem>
-                <MenuItem onClick={handleClose}>My account</MenuItem>
-                {/* <MenuItem onClick={handleSignOut}>Sign Out</MenuItem> */}
-                <MenuItem>Sign Out</MenuItem>
+                <MenuItem onClick={handleProfileClick}>Profile</MenuItem>
+                <MenuItem onClick={handleLogout}>Logout</MenuItem>
               </Menu>
             </div>
           ) : (
             <>
-              <MenuItem
-                onClick={() => {
-                  window.location.href = "/login";
-                }}
+              <Button
+                onClick={() => 
+                  history.push("/login")
+                } color = 'inherit'
               >
-                Sign In
-              </MenuItem>
-              <MenuItem
-                onClick={() => {
-                  window.location.href = "/register";
-                }}
+                Login
+              </Button>
+              <Button
+                onClick={() => 
+                  history.push('/register')} color ='inherit'
               >
-                Sign Up
-              </MenuItem>
+                Register
+              </Button>
             </>
           )}
         </Toolbar>
