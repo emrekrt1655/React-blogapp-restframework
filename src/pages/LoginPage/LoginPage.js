@@ -57,7 +57,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export const LoginPage = () => {
+const LoginPage = () => {
   const classes = useStyles();
   const history = useHistory();
   const { token, setToken } = useContext(appContext);
@@ -70,7 +70,10 @@ export const LoginPage = () => {
     validationSchema: validationSchema,
     onSubmit: async (values) => {
       try {
-        const result = await postData("https://restframework-blogapi.herokuapp.com/auth/login/", values);
+        const result = await postData(
+          "https://restframework-blogapi.herokuapp.com/auth/login/",
+          values
+        );
         setToken(result?.data?.key);
         history.push("/");
       } catch ({ response }) {
@@ -82,7 +85,7 @@ export const LoginPage = () => {
       }
     },
   });
-};
+
 
 return (
   <Grid container component="main" className={classes.root}>
@@ -134,7 +137,7 @@ return (
         <Grid container className={classes.linkWrapper}>
           <Grid item xs>
             <Link href="/register" variant="body2" mx="auto">
-              If you don't have an account, please  Register
+              If you don't have an account, please Register
             </Link>
           </Grid>
         </Grid>
@@ -152,3 +155,7 @@ return (
     </Grid>
   </Grid>
 );
+
+};
+
+export default LoginPage;

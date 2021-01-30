@@ -1,10 +1,11 @@
 import logo from './logo.svg';
 import './App.css';
-import Navbar from './components/Navbar'
+
+import RegisterPage from './pages/RegisterPage/RegisterPage'
 
 function App() {
   return (
-   <Navbar/>
+   <RegisterPage/>
   );
 }
 
