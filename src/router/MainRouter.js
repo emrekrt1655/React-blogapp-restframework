@@ -1,17 +1,17 @@
 import { lazy, Suspense, Fragment } from "react";
 
-import { BrowserRouter as Router, Route, Switch, Redirect } from "react-router-dom";
+import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
+import HomePage from "../pages/HomePage/HomePage";
 import LoginPage from "../pages/LoginPage/LoginPage";
 import RegisterPage from "../pages/RegisterPage/RegisterPage";
-import HomePage from "../pages/HomePage/HomePage";
 import Navbar from "../components/Navbar";
 
 export const MainRouter = () => {
   const isLoggedIn = false;
 
   return (
-    <Router>
-      <Suspense fallback="loading...">
+    <BrowserRouter>
+      <Suspense fallback="">
         <Navbar />
         <Switch>
           <Route path="/login" component={LoginPage} exact />
@@ -19,8 +19,6 @@ export const MainRouter = () => {
           <Route path="/" component={HomePage} exact />
         </Switch>
       </Suspense>
-    </Router>
+    </BrowserRouter>
   );
 };
-
-

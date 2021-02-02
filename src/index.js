@@ -1,6 +1,6 @@
 import ReactDOM from "react-dom";
-import Providers from "./providers/";
-import  MainRouter  from "./router";
+import Providers from "./providers";
+import MainRouter from "./router";
 
 ReactDOM.render(
   <Providers>
