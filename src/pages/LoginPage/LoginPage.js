@@ -75,6 +75,7 @@ const LoginPage = () => {
           values
         );
         setToken(result?.data?.key);
+        localStorage.setItem("token", result?.data?.key);
         history.push("/");
       } catch ({ response }) {
         if (response) {
