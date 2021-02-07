@@ -6,6 +6,7 @@ import HomePage from "../pages/HomePage/HomePage";
 import LoginPage from "../pages/LoginPage/LoginPage";
 import RegisterPage from "../pages/RegisterPage/RegisterPage";
 import PostDetail from "../pages/PostDetail/PostDetail";
+import {ProfilePage} from "../pages/ProfilePage/ProfilePage";
 import Navbar from "../components/Navbar";
 
 export const MainRouter = () => {
@@ -20,6 +21,7 @@ export const MainRouter = () => {
           <Route path="/register" component={RegisterPage} exact />
           <Route path="/" component={HomePage} exact />
           <PrivateRouter exact path="/detail/:slug" component={PostDetail} />
+          <PrivateRouter exact path= "/profile" component={ProfilePage} />
         </Switch>
       </Suspense>
     </BrowserRouter>
