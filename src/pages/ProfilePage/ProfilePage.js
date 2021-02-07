@@ -67,7 +67,7 @@ export const ProfilePage = () => {
       console.log("values", values);
       try {
         const result = await axios.put(
-          "https://restframework-blogapi.herokuapp.com/api/auth/user/",
+          "https://restframework-blogapi.herokuapp.com/auth/user/",
           values,
           {
             headers: {

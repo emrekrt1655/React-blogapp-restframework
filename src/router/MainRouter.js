@@ -7,6 +7,7 @@ import LoginPage from "../pages/LoginPage/LoginPage";
 import RegisterPage from "../pages/RegisterPage/RegisterPage";
 import PostDetail from "../pages/PostDetail/PostDetail";
 import {ProfilePage} from "../pages/ProfilePage/ProfilePage";
+import {CustomPostPage} from "../pages/CustomPostPage/CustomPostPage";
 import Navbar from "../components/Navbar";
 
 export const MainRouter = () => {
@@ -22,6 +23,8 @@ export const MainRouter = () => {
           <Route path="/" component={HomePage} exact />
           <PrivateRouter exact path="/detail/:slug" component={PostDetail} />
           <PrivateRouter exact path= "/profile" component={ProfilePage} />
+          <PrivateRouter exact path= "/edit/:slug" component={CustomPostPage} />
+          <PrivateRouter exact path= "/create" component={CustomPostPage} />
         </Switch>
       </Suspense>
     </BrowserRouter>
