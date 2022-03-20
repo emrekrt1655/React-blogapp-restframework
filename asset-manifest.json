@@ -1,0 +1,17 @@
+{
+  "files": {
+    "main.js": "/React-blogapp-restframework/static/js/main.d133ce5b.chunk.js",
+    "main.js.map": "/React-blogapp-restframework/static/js/main.d133ce5b.chunk.js.map",
+    "runtime-main.js": "/React-blogapp-restframework/static/js/runtime-main.14dd357f.js",
+    "runtime-main.js.map": "/React-blogapp-restframework/static/js/runtime-main.14dd357f.js.map",
+    "static/js/2.31d562be.chunk.js": "/React-blogapp-restframework/static/js/2.31d562be.chunk.js",
+    "static/js/2.31d562be.chunk.js.map": "/React-blogapp-restframework/static/js/2.31d562be.chunk.js.map",
+    "index.html": "/React-blogapp-restframework/index.html",
+    "static/js/2.31d562be.chunk.js.LICENSE.txt": "/React-blogapp-restframework/static/js/2.31d562be.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.14dd357f.js",
+    "static/js/2.31d562be.chunk.js",
+    "static/js/main.d133ce5b.chunk.js"
+  ]
+}
