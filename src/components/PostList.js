@@ -33,7 +33,7 @@ function CardList({ hasNext, loadMore, postList }) {
                     <PostCard post={item} />
                   </Grid>
                 ))
-              : "No data available"}
+              : <img src='https://images.pexels.com/photos/262508/pexels-photo-262508.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940' />}
           </Grid>
         </Grid>
       </Grid>
